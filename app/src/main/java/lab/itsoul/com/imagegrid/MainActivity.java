@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onResponse(Call call, Response response) throws IOException {
+            public void onResponse(Call call, Response response) {
                 runOnUiThread(() -> {
                     try {
                         JSONArray jsonArray = new JSONArray(response.body().string());
