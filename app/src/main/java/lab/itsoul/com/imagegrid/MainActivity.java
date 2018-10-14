@@ -96,26 +96,24 @@ public class MainActivity extends AppCompatActivity {
         if(op.equals("asc")) images.sort(Comparator.comparing(Image::getAuthor));
         else if(op.equals("des")) images.sort(Comparator.comparing(Image::getAuthor).reversed());
         else images.sort(Comparator.comparing(Image::getDate).reversed());
+
         ImageAdapter adapter = new ImageAdapter(MainActivity.this, images);
         imageContainer.setAdapter(adapter);
     }
 
     public void sortAscending(View view) {
-        //images.clear();
         imageContainer.setVisibility(View.GONE);
         spinner.setVisibility(View.VISIBLE);
         getData(urlET.getText().toString(), "asc");
     }
 
     public void sortDescending(View view) {
-//        images.clear();
         imageContainer.setVisibility(View.GONE);
         spinner.setVisibility(View.VISIBLE);
         getData(urlET.getText().toString(), "des");
     }
 
     public void sortDate(View view) {
-//        images.clear();
         imageContainer.setVisibility(View.GONE);
         spinner.setVisibility(View.VISIBLE);
         getData(urlET.getText().toString(), "recent");
