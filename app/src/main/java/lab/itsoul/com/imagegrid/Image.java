@@ -1,11 +1,14 @@
 package lab.itsoul.com.imagegrid;
 
+
+import java.util.Date;
+
 public class Image {
     private String photo;
     private String author;
-    private String date;
+    private Date date;
 
-    public Image(String photo, String author, String date) {
+    public Image(String photo, String author, Date date) {
         this.photo = photo;
         this.author = author;
         this.date = date;
@@ -27,11 +30,11 @@ public class Image {
         this.author = author;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 }

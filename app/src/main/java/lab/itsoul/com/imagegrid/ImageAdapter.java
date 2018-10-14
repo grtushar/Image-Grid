@@ -28,7 +28,7 @@ public class ImageAdapter extends BaseAdapter {
     }
 
     public Object getItem(int position) {
-        return null;
+        return images.get(position);
     }
 
     public long getItemId(int position) {
@@ -37,31 +37,55 @@ public class ImageAdapter extends BaseAdapter {
 
     // create a new ImageView for each item referenced by the Adapter
     public View getView(int position, View convertView, ViewGroup parent) {
-        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View view;
+        ViewHolder viewHolder;
 
-        ImageView imageView;
         if (convertView == null) {
-
-            view = inflatetr.inflate(R.layout.image_view, parent, false);
-            // if it's not recycled, initialize some attributes
-//            imageView = new ImageView(mContext);
-//            imageView.setLayoutParams(new ViewGroup.LayoutParams(85, 85));
-//            imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-//            imageView.setPadding(8, 8, 8, 8);
+            viewHolder = new ViewHolder();
+            LayoutInflater inflater = LayoutInflater.from(mContext);
+            convertView = inflater.inflate(R.layout.image_view, null);
+            convertView.setTag(viewHolder);
+            viewHolder.image = convertView.findViewById(R.id.photo2);
+            viewHolder.title = convertView.findViewById(R.id.imageTitle);
         } else {
-//            imageView = (ImageView) convertView;
-            view = convertView;
+            viewHolder = (ViewHolder) convertView.getTag();
         }
+
+        Picasso.get()
+                .load(images.get(position).getPhoto())
+                .resize(120, 80)
+                .into(viewHolder.image);
+        viewHolder.title.setText(images.get(position).getAuthor());
+        return convertView;
+    }
+
+    private static class ViewHolder{
+        public ImageView image;
+        public TextView title;
+    }
+}
+
+
+
+// if it's not recycled, initialize some attributes
+//>>>>>>> 170fd7ba5b07c2818591f5dead03132749542ee5
+////            imageView = new ImageView(mContext);
+////            imageView.setLayoutParams(new ViewGroup.LayoutParams(85, 85));
+////            imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+////            imageView.setPadding(8, 8, 8, 8);
+//<<<<<<< HEAD
+//        } else {
+////            imageView = (ImageView) convertView;
+//            view = convertView;
+//        }
 
 //        imageView.setImageURI(Uri.parse(images.get(position).getPhoto()));
 //        Picasso.get().load(images.get(position).getPhoto()).into(imageView);
-        ImageView photo = view.findViewById(R.id.photo2);
-        TextView title = view.findViewById(R.id.imageTitle);
-        Picasso.get().load(images.get(position).getPhoto()).into(photo);
-        title.setText(images.get(position).getAuthor());
-        return view;
-    }
+//        ImageView photo = view.findViewById(R.id.photo2);
+//        TextView title = view.findViewById(R.id.imageTitle);
+//        Picasso.get().load(images.get(position).getPhoto()).into(photo);
+//        title.setText(images.get(position).getAuthor());
+//        return view;
+//    }
 
 //    // references to our images
 //    private Integer[] mThumbIds = {
@@ -77,4 +101,14 @@ public class ImageAdapter extends BaseAdapter {
 //            R.drawable.sample_4, R.drawable.sample_5,
 //            R.drawable.sample_6, R.drawable.sample_7
 //    };
-}
+//}
+//=======
+
+//            imageView = (ImageView) convertView;
+
+
+
+//        imageView.setImageURI(Uri.parse(images.get(position).getPhoto()));
+//        Picasso.get().load(images.get(position).getPhoto()).into(imageView);
+//        return imageView;
+//>>>>>>> 170fd7ba5b07c2818591f5dead03132749542ee5

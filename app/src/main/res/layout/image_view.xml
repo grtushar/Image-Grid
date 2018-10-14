@@ -9,11 +9,12 @@
     <ImageView
         android:id="@+id/photo2"
         android:layout_width="wrap_content"
+        android:padding="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_launcher_foreground" />
+        app:srcCompat="@drawable/ic_launcher_foreground" android:contentDescription="TODO"/>
 
     <TextView
         android:id="@+id/imageTitle"
